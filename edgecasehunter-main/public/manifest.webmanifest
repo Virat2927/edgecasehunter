@@ -1,0 +1,12 @@
+{
+  "name": "EdgeCase Hunter",
+  "short_name": "EdgeCase Hunter",
+  "description": "Explore the states your test suite misses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07090E",
+  "theme_color": "#07090E",
+  "icons": [
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

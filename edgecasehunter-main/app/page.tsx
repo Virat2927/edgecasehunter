@@ -21,10 +21,10 @@ export default function Page() {
       <Sidebar active={screen} onNavigate={setScreen} />
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar active={screen} />
+        <Topbar active={screen} onNavigate={setScreen} />
 
         <main className="flex-1 overflow-y-auto">
-          <div className="mx-auto w-full max-w-[1180px] px-5 py-6 md:px-8 md:py-8">
+          <div className="mx-auto w-full max-w-[1180px] px-3 py-4 sm:px-5 sm:py-6 md:px-8 md:py-8">
             {screen === 'overview' && <OverviewScreen onNavigate={setScreen} />}
             {screen === 'exploration' && <ExplorationScreen onNavigate={setScreen} />}
             {screen === 'findings' && <FindingsScreen onOpenFinding={openFinding} onNavigate={setScreen} />}

@@ -21,7 +21,7 @@ export function Sidebar({
   onNavigate: (s: Screen) => void
 }) {
   return (
-    <aside className="flex w-[212px] shrink-0 flex-col border-r border-border bg-surface">
+    <aside className="hidden w-[212px] shrink-0 flex-col border-r border-border bg-surface md:flex">
       <div className="flex h-14 items-center border-b border-border px-4">
         <LogoWordmark />
       </div>

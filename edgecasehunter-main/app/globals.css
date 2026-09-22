@@ -32,19 +32,19 @@
 
 :root {
   color-scheme: dark;
-  --background: #0b0d10;
-  --surface: #111418;
-  --surface-2: #171b21;
-  --border: #262c34;
-  --border-strong: #333b45;
-  --foreground: #f2f4f7;
-  --fg-secondary: #9299a5;
-  --fg-muted: #626a76;
-  --accent: #7c6cff;
-  --accent-soft: color-mix(in oklab, #7c6cff 14%, transparent);
-  --green: #39d98a;
-  --amber: #f5b84b;
-  --red: #ff5c67;
+  --background: #07090e;
+  --surface: #0f131c;
+  --surface-2: #161c28;
+  --border: #222b3d;
+  --border-strong: #34415a;
+  --foreground: #f8fafc;
+  --fg-secondary: #8e9aaf;
+  --fg-muted: #647086;
+  --accent: #00e5ff;
+  --accent-soft: color-mix(in oklab, #00e5ff 14%, transparent);
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ff3366;
 }
 
 @layer base {
@@ -65,6 +65,10 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  a {
+    touch-action: manipulation;
   }
   ::selection {
     background-color: color-mix(in oklab, var(--accent) 32%, transparent);

@@ -106,7 +106,7 @@ export function ExplorationScreen({ onNavigate }: { onNavigate: (s: Screen) => v
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.15fr_1fr]">
+      <div className="grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-[1.15fr_1fr]">
         {/* target preview */}
         <Panel className="overflow-hidden">
           <PanelHeader
@@ -115,7 +115,7 @@ export function ExplorationScreen({ onNavigate }: { onNavigate: (s: Screen) => v
               <span className="font-mono text-[11px] text-fg-muted">9:41 · Portrait</span>
             }
           />
-          <div className="relative flex items-center justify-center bg-[radial-gradient(circle_at_50%_0%,rgba(124,108,255,0.05),transparent_60%)] px-6 py-8">
+          <div className="relative flex items-center justify-center bg-[radial-gradient(circle_at_50%_0%,rgba(0,229,255,0.07),transparent_60%)] px-3 py-5 sm:px-6 sm:py-8">
             <TargetAppPreview state={appState} scanning={phase === 'capture' || phase === 'observe'} />
           </div>
         </Panel>
@@ -125,7 +125,7 @@ export function ExplorationScreen({ onNavigate }: { onNavigate: (s: Screen) => v
           {/* current state */}
           <Panel>
             <PanelHeader title="Current state" />
-            <div className="grid grid-cols-3 gap-3 p-4">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3 p-4 sm:grid-cols-3">
               <Field
                 label="Auth"
                 value={appState === 'login' ? 'Unauthed' : 'Authed'}
@@ -155,7 +155,9 @@ export function ExplorationScreen({ onNavigate }: { onNavigate: (s: Screen) => v
           right={<span className="font-mono text-[11px] text-fg-muted">State space · 24 nodes</span>}
         />
         <div className="grid grid-cols-1 gap-6 p-4 md:grid-cols-[1.5fr_1fr]">
-          <StateGraph />
+          <div className="min-w-0 overflow-x-auto rounded-md border border-border bg-background/40 p-2">
+            <div className="min-w-[420px]"><StateGraph /></div>
+          </div>
           <div className="flex flex-col justify-center gap-3 border-t border-border pt-4 md:border-t-0 md:border-l md:pt-0 md:pl-6">
             <p className="text-[13px] leading-relaxed text-fg-secondary">
               EdgeCase Hunter isn&apos;t running a fixed script. It maps the state space and
@@ -179,20 +181,20 @@ function NextEdgeCase({ onRun }: { onRun: () => void }) {
     { label: 'Previously tested', value: 'No', tone: 'neutral' },
   ]
   return (
-    <Panel className="ec-fade">
+    <Panel className="ec-fade border-accent/60 shadow-[0_0_24px_rgba(0,229,255,0.09)]">
       <PanelHeader
         title="Next edge case"
         right={<Pill tone="accent">Candidate</Pill>}
       />
       <div className="p-4">
-        <div className="flex items-center gap-2 font-mono text-[15px] font-semibold text-foreground">
-          Lock <ArrowRight className="size-4 text-accent" /> Resume
+        <div className="flex items-center gap-2 font-mono text-[15px] font-semibold text-accent">
+          LOCK <ArrowRight className="size-4 text-accent" /> RESUME
         </div>
         <p className="mt-2 text-[13px] leading-relaxed text-fg-secondary">
           Authentication state may not survive a lifecycle interruption.
         </p>
 
-        <div className="mt-4 grid grid-cols-3 divide-x divide-border overflow-hidden rounded-md border border-border bg-surface-2">
+        <div className="mt-4 grid grid-cols-1 divide-y divide-border overflow-hidden rounded-md border border-border bg-surface-2 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {signals.map((s) => (
             <div key={s.label} className="px-3 py-2.5">
               <div className="text-[10.5px] tracking-wide text-fg-muted uppercase">{s.label}</div>
@@ -210,10 +212,10 @@ function NextEdgeCase({ onRun }: { onRun: () => void }) {
           ))}
         </div>
       </div>
-      <div className="border-t border-border p-3">
+      <div className="sticky bottom-0 border-t border-border bg-surface p-3 pb-safe">
         <Button
           size="lg"
-          className="w-full bg-accent text-white hover:bg-accent/90"
+          className="w-full bg-accent font-bold text-background hover:bg-accent/90"
           onClick={onRun}
         >
           <Play className="size-4" />
@@ -320,13 +322,13 @@ function BugPanel({
           Application returned to an unexpected state.
         </p>
 
-        <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-stretch gap-3">
+        <div className="mt-4 grid grid-cols-1 items-stretch gap-2 sm:grid-cols-[1fr_auto_1fr] sm:gap-3">
           <div className="rounded-md border border-border bg-surface-2 p-3">
             <div className="text-[10.5px] tracking-wide text-fg-muted uppercase">Expected</div>
             <div className="mt-1.5 font-mono text-[13px] text-foreground">Dashboard</div>
             <div className="font-mono text-[11px] text-green">Authenticated</div>
           </div>
-          <div className="flex items-center font-mono text-[11px] text-fg-muted">vs</div>
+          <div className="flex items-center justify-center font-mono text-[11px] text-fg-muted">vs</div>
           <div className="rounded-md border border-red/25 bg-red/[0.06] p-3">
             <div className="text-[10.5px] tracking-wide text-fg-muted uppercase">Observed</div>
             <div className="mt-1.5 font-mono text-[13px] text-red">Login</div>
@@ -334,7 +336,7 @@ function BugPanel({
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-3 gap-3">
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Field label="Trigger" value="Lock → Resume" />
           <Field label="Reproduced" value="3 / 3 runs" tone="green" />
           <Field label="Detection" value="Verified" tone="green" />
@@ -344,7 +346,7 @@ function BugPanel({
           Authentication state was lost after resuming the application.
         </p>
       </div>
-      <div className="flex gap-2 border-t border-border p-3">
+      <div className="flex flex-col gap-2 border-t border-border p-3 sm:flex-row">
         <Button className="flex-1 bg-accent text-white hover:bg-accent/90" size="lg" onClick={onViewEvidence}>
           View evidence
           <ArrowRight className="size-4" />

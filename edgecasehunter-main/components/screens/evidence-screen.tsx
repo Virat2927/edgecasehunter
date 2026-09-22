@@ -113,7 +113,7 @@ export function EvidenceScreen({ onNavigate }: { onNavigate: (s: Screen) => void
         {/* before / after screenshots */}
         <Panel>
           <PanelHeader title="State comparison" right={<span className="font-mono text-[11px] text-fg-muted">Captured frames</span>} />
-          <div className="grid grid-cols-2 gap-4 p-4">
+          <div className="grid grid-cols-1 gap-6 p-4 sm:grid-cols-2 sm:gap-4">
             <div className="flex flex-col items-center gap-2">
               <span className="flex items-center gap-1.5 font-mono text-[11px] tracking-wide text-green uppercase">
                 <span className="size-1.5 rounded-full bg-green" />

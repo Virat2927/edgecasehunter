@@ -48,7 +48,7 @@ export function OverviewScreen({ onNavigate }: { onNavigate: (s: Screen) => void
 
       <MetricStrip />
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-[1.4fr_1fr]">
         {/* current exploration */}
         <Panel>
           <PanelHeader

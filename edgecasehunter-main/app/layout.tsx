@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
     title: 'EdgeCase Hunter',
   },
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: '/icon-512.png',
     apple: '/icon-512.png',
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#0B0D10',
+  themeColor: '#07090E',
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
